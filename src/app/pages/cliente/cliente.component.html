@@ -1,0 +1,95 @@
+<section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+
+                <div class="row animated fadeIn">
+                    <div class="col-12">
+
+                        <div class="card">
+                            <div class="card-title">
+
+                                <h3 class="text-center mt-2 subtitulo"> Gestion de Clientes </h3>
+
+                            </div>
+
+
+                            <div class="card-body">
+                                <div class="">
+
+                                    <h5 class="text-center mt-2 subtitulo">Clientes Registrados (<small>{{totalRegistros}}</small>)</h5>
+
+                                </div>
+
+                                <input #input (keyup)="buscarCliente(input.value)" type="text" class="form-control mt-4" placeholder="Buscar Cliente...">
+                                <button routerLink="/clientes/cargarcliente" class="btn btn-dark btn-small align-center buttoncontent mt-2">
+                                    <fa-icon [icon]="faPlus"></fa-icon>
+                                     Registrar nuevo Cliente
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="table-responsive table-bordered">
+                    <table class="table color-bordered-table info-bordered-table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Email</th>
+                                <th>Dirección</th>
+                                <th>Cuit</th>
+                                <th>Telefono</th>
+                                <th>DNI</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cliente of clientes">
+
+                                <td class="w70">
+                                    <!-- <img (click)="mostrarModal( usuario._id)" [src]="pipe" class="img-50 img-circle pointer"> -->
+                                </td>
+                                <td class="text">
+                                    {{cliente.nombre}}
+                                </td>
+                                <td class="text">
+                                    {{cliente.apellido}}
+                                </td>
+                                <td class="text">
+                                    {{cliente.email}}
+                                </td>
+                                <td class="text">
+                                    {{cliente.direccion}}
+                                </td>
+                                <td class="text">
+                                    {{cliente.cuit}}
+                                </td>
+                                <td class="text">
+                                    {{cliente.telefono}}
+                                </td>
+                                <td class="text">
+                                    {{cliente.dni}}
+                                </td>
+                                <td>
+                                    <!--<button (click)="guardarStorage(id ,token,cliente)" routerLink="/cliente/actualizarcliente" class="btn btn-primary">
+                                        <fa-icon [icon]="faEdit"></fa-icon>
+                                    </button>
+                                    <button (click)="borrarCliente(cliente)" class="btn btn-danger">
+                                        <fa-icon [icon]="faTrash"></fa-icon>
+                                    </button>-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

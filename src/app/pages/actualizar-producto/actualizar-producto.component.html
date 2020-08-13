@@ -1,0 +1,74 @@
+<div class="row">
+
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title subtitulo text-center">Actualizar Producto</h4>
+                <hr>
+                <!-- <h6 class="card-subtitle mt-2">made with bootstrap elements</h6> -->
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20 mt-2s">
+                    <div class="form-group mt-2">
+                        <label for="exampleInputuname">Nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input [ngModel]="producto.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Descripción</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input [ngModel]="producto.descripcion" name="descripcion" type="text" class="form-control" placeholder="Descripcion" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputTelefono">Cantidad</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input [ngModel]="producto.stock" name="stock" type="text" class="form-control" placeholder="Stock">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputTelefono">Precio</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input [ngModel]="producto.precio" name="precio" type="text" class="form-control" placeholder="Precio">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <select name="proveedor" [ngModel]="producto.proveedor._id"class="form-control">
+                        <option class="form-control" *ngFor="let proveedor of proveedores" value={{proveedor._id}}>
+                            {{proveedor.nombre}}
+                        </option>
+                    </select>
+                    </div> 
+                    <button type="submit" class="btn btn-dark waves-effect waves-light m-r-10">Guardar</button>
+                    <button type="submit" routerLink="/productos" class="btn btn-dark waves-effect waves-light m-2">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="col-lg-5">
+      <div class="card">
+          <div class="card-body" align="center">
+              <h4 class="card-title">Subir / Actualizar Imagen</h4> -->
+    <!-- <h6 class="card-subtitle">made with bootstrap elements</h6> -->
+    <!-- <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="w150">
+              <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
+
+              <input (change)="seleccionImagen( $event.target.files[0] )" type="file">
+              <br>
+              <br>
+              <button (click)="cambiarImagen()" [disabled]="!imagenSubir" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10">Actualizar Imagen</button>
+
+
+
+          </div>
+      </div>
+  </div> -->
+
+</div>
