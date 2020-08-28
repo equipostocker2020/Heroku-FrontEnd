@@ -3,11 +3,13 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve",
+        "start": "node server.js",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
+ 	"e2e": "ng e2e",
+        "postinstall": "ng build --aot"
     },
     "engines": {
         "node": "12.4.0",
@@ -39,8 +41,6 @@
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.901.0",
-        "@angular/cli": "~9.1.0",
-        "@angular/compiler-cli": "~9.1.0",
         "@angular/language-service": "~9.1.0",
         "@types/node": "^12.11.1",
         "@types/jasmine": "~3.5.0",
