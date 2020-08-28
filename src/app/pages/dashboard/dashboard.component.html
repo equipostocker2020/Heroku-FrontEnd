@@ -1,1 +1,161 @@
-<h3 class="h3titulo text-center">Bienvenido a Stocker {{usuario.empresa}}</h3>
+<section>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">STOCKER</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/usuarios">Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/proveedores">Proveedores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/clientes">Clientes</a>
+                </li>
+            </ul>
+            <div class="dropdown">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-label="Third group">
+                    <img [src]="imgUrl" width="35" height="35" class="d-inline-block align-top" alt="">
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#">{{usuario.email}}</a>
+                    <a class="dropdown-item" href="/profile">Ver Perfil</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/login" (click)="eliminarStorage()">Salir</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<section>
+    <div class="container-fluid">
+        <div class="row m-5 justify-content-center">
+            <div class="col-lg-7">
+                <h3 class="text-center h3titulo">Stocker App</h3>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <img [src]="imgUrl" class="w200-avatar img-thumbnail cursor imprimible">
+                        <br><br>
+                        <h4 class="card-title text-center">Bienvenido <b class="subtitulo">{{usuario.empresa}}</b>
+                        </h4>
+                        <p class="card-text text-center">Email : {{usuario.email}}</p>
+                        <p class="card-text text-center">Nombre : {{usuario.nombre}}</p>
+                        <p class="card-text text-center">CUIT: {{usuario.cuit}}</p>
+                        <p class="card-text text-center">Direccion: {{usuario.direccion}}</p>
+                        <button routerLink="/profile" class="btn btn-dark btn-lg btn-block text-uppercase align-center">
+                                Actualizar tu Perfil
+                            </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mt-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title text-center subtitulo">Productos</h4>
+                                <div class="table-responsive table-bordered">
+                                    <table class="table color-bordered-table info-bordered-table">
+                                        <thead class="thead-dark text-center">
+                                            <th>Nombre</th>
+                                            <th>Email</th>
+                                            <th>Direccion</th>
+                                            <th>cuit</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let producto of productos">
+                                                <td class="text">{{producto.nombre}}</td>
+                                                <td class="text">$ {{producto.precio}}</td>
+                                                <td class="text">{{producto.stock}}</td>
+                                                <td class="text">{{producto.proveedor.nombre}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="container text-center">
+                                <button routerLink="/productos/cargarproductos" class="btn btn-dark btn-lg btn-block text-uppercase">
+                                Agregar Mas..
+                            </button>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mt-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title text-center subtitulo">Proveedores</h4>
+                                <div class="table-responsive table-bordered">
+                                    <table class="table color-bordered-table info-bordered-table">
+                                        <thead class="thead-dark text-center">
+                                            <th>Nombre</th>
+                                            <th>Email</th>
+                                            <th>Direccion</th>
+                                            <th>cuit</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let proveedor of proveedores">
+                                                <td class="text">{{proveedor.nombre}}</td>
+                                                <td class="text">$ {{proveedor.email}}</td>
+                                                <td class="text">{{proveedor.direccion}}</td>
+                                                <td class="text">{{proveedor.cuit}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="container text-center">
+                                <button routerLink="/proveedores/cargarproveedor" class="btn btn-dark btn-lg btn-block text-uppercase">
+                                Agregar Mas..
+                            </button>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mt-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title text-center subtitulo">Clientes</h4>
+                                <div class="table-responsive table-bordered">
+                                    <table class="table color-bordered ">
+                                        <thead class="thead-dark text-center">
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>Email</th>
+                                            <th>Telefono</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let cliente of clientes">
+                                                <td class="text">{{cliente.nombre}}</td>
+                                                <td class="text">$ {{cliente.apellido}}</td>
+                                                <td class="text">{{cliente.email}}</td>
+                                                <td class="text">{{cliente.telefono}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="container text-center">
+                                    <button routerLink="/clientes/cargarcliente" class="btn btn-dark btn-lg btn-block text-uppercase">
+                                    Agregar Mas..
+                                </button>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

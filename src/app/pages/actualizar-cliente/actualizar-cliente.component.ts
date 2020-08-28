@@ -1,34 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { ProveedorService } from '../../services/proveedor.service';
-import { Proveedor } from '../../models/proveedor.models';
+import { ClienteService } from '../../services/cliente.service';
+import { Cliente } from '../../models/cliente.models';
 import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FileUploadService } from '../../services/file-upload.service';
 
 @Component({
-  selector: 'app-actualizar-proveedor',
-  templateUrl: './actualizar-proveedor.component.html',
+  selector: 'app-actualizar-cliente',
+  templateUrl: './actualizar-cliente.component.html',
   styles: [
-  ],
+  ]
 })
-export class ActualizarProveedorComponent implements OnInit {
+export class ActualizarClienteComponent implements OnInit {
+
   token: string;
-  proveedor: Proveedor;
+  cliente: Cliente;
   id: string;
   imagenSubir: File;
   imagenTemp: string | ArrayBuffer;
 
   constructor(
-    public _proveedorService: ProveedorService,
+    public _clienteService: ClienteService,
     public _usuarioService: UsuarioService,
     public router: Router,
     public _fileUpLoadService: FileUploadService
   ) {
-    this.proveedor = this._proveedorService.proveedor;
+    this.cliente = this._clienteService.cliente;
+    console.log(this.cliente);
     this._usuarioService.usuario;
     this.cargarStorage();
-    this.guardarStorage(this._usuarioService.usuario._id, this._usuarioService.token, this.proveedor);
+    this.guardarStorage(this._usuarioService.usuario._id, this._usuarioService.token, this.cliente);
   }
 
   ngOnInit(): void { }
@@ -36,62 +38,68 @@ export class ActualizarProveedorComponent implements OnInit {
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.proveedor = JSON.parse(localStorage.getItem('proveedor'));
+      this.cliente = JSON.parse(localStorage.getItem('cliente'));
     } else {
       this.token = '';
-      this.proveedor = null;
+      this.cliente = null;
     }
   }
 
-  guardarStorage(id: string, token: string, proveedor: Proveedor) {
+  guardarStorage(id: string, token: string, cliente: Cliente) {
     localStorage.setItem('id', this._usuarioService.usuario._id);
     localStorage.setItem('token', this._usuarioService.token);
-    localStorage.setItem('proveedor', JSON.stringify(proveedor));
-    this.proveedor = proveedor;
+    localStorage.setItem('cliente', JSON.stringify(cliente));
+
+    this.cliente = cliente;
     this.token = token;
   }
 
-  guardar(proveedor: Proveedor) {
-    this.proveedor.nombre = proveedor.nombre;
-    this.proveedor.direccion = proveedor.direccion;
-    this.proveedor.cuit = proveedor.cuit;
-    this.proveedor.email = proveedor.email;
-    this.proveedor.telefono = proveedor.telefono;
-    this.proveedor.situacion_afip = proveedor.situacion_afip;
+  guardar(cliente: Cliente) {
+    this.cliente.nombre = cliente.nombre;
+    this.cliente.apellido = cliente.apellido;
+    this.cliente.email = cliente.email;
+    this.cliente.direccion = cliente.direccion;
+    this.cliente.cuit = cliente.cuit;
+    this.cliente.telefono = cliente.telefono;
+    this.cliente.dni = cliente.dni;
     this._usuarioService.token = this.token;
-    this._proveedorService.actualizarProveedor(this.proveedor)
-      .subscribe((resp: any) => {
-        this.router.navigate(['/proveedores']);
-      });
-  }
+    console.log(cliente);
 
+    this._clienteService.actualizarCliente(this.cliente)
+      .subscribe((resp: any) => {
+        this.router.navigate(['/clientes']);
+      });
+
+  }
   subirImagen() {
     this._fileUpLoadService
-      .actualizarFoto(this.imagenSubir, 'proveedores', this.proveedor._id)
+      .actualizarFoto(this.imagenSubir, 'clientes', this.cliente._id)
       .then(img => {
-        this.proveedor.img = img;
-        Swal.fire('Guardado', 'Imagen del proveedor actualizada', 'success');
+        this.cliente.img = img;
+        Swal.fire('Guardado', 'Imagen del cliente actualizada', 'success');
       }).catch(err => {
+        console.log(err);
         Swal.fire('Error', 'No se pudo subir la imagen', 'error');
       });
-  }
 
+  }
   cambiarImagen(file: File) {
     this.imagenSubir = file;
+
     if (!file) {
       return this.imagenTemp = null;
     }
+
     const reader = new FileReader();
     reader.readAsDataURL(file);
+
     reader.onloadend = () => {
       this.imagenTemp = reader.result;
-    }
+    };
   }
-
   eliminarStorage() {
     localStorage.removeItem('id');
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
   }
-
 }

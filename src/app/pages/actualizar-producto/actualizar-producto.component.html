@@ -1,74 +1,112 @@
-<div class="row">
+<section>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">STOCKER</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/usuarios">Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/proveedores">Proveedores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/clientes">Clientes</a>
+                </li>
+            </ul>
+            <div class="dropdown">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-label="Third group">
+                    <img [src]="_usuarioService.usuario.img | imagen: 'usuarios'" width="35" height="35"
+                        class="d-inline-block align-top" alt="">
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#">{{_usuarioService.usuario.email}}</a>
+                    <a class="dropdown-item" href="/profile">Ver Perfil</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/login" (click)="eliminarStorage()">Salir</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
 
-    <div class="col-lg-7">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title subtitulo text-center">Actualizar Producto</h4>
-                <hr>
-                <!-- <h6 class="card-subtitle mt-2">made with bootstrap elements</h6> -->
-                <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20 mt-2s">
-                    <div class="form-group mt-2">
-                        <label for="exampleInputuname">Nombre</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-user"></i></div>
-                            <input [ngModel]="producto.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" required>
+<div class="container m-5">
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title subtitulo text-center">Actualizar Producto</h4>
+                    <hr>
+                    <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20 mt-2s">
+                        <div class="form-group mt-2">
+                            <label for="exampleInputuname">Nombre</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input [ngModel]="producto.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Descripción</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-email"></i></div>
-                            <input [ngModel]="producto.descripcion" name="descripcion" type="text" class="form-control" placeholder="Descripcion" required>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Descripción</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                                <input [ngModel]="producto.descripcion" name="descripcion" type="text" class="form-control" placeholder="Descripcion" required>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputTelefono">Cantidad</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-email"></i></div>
-                            <input [ngModel]="producto.stock" name="stock" type="text" class="form-control" placeholder="Stock">
+                        <div class="form-group">
+                            <label for="exampleInputTelefono">Cantidad</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                                <input [ngModel]="producto.stock" name="stock" type="text" class="form-control" placeholder="Stock">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputTelefono">Precio</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-email"></i></div>
-                            <input [ngModel]="producto.precio" name="precio" type="text" class="form-control" placeholder="Precio">
+                        <div class="form-group">
+                            <label for="exampleInputTelefono">Precio</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                                <input [ngModel]="producto.precio" name="precio" type="text" class="form-control" placeholder="Precio">
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <select name="proveedor" [ngModel]="producto.proveedor._id" class="form-control">
+                                <option class="form-control" *ngFor="let proveedor of proveedores"
+                                    value={{proveedor._id}}>
+                                    {{proveedor.nombre}}
+                                </option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-dark waves-effect waves-light m-r-10">Guardar</button>
+                        <button type="submit" routerLink="/productos" class="btn btn-dark waves-effect waves-light m-2">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-body">
+                        <h4 class="card-title">Avatar</h4>
+                        <h6 class="card-subtitle">Imagen del producto</h6>
+                        <div class="text-center">
+                            <img *ngIf="!imagenTemp" [src]="producto.imagenUrls" class="avatar">
+                            <img *ngIf="imagenTemp" [src]="imagenTemp" class="img-avatar">
+                        </div>
+                        <input type="file" (change)="cambiarImagen($event.target.files[0])">
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="!imagenSubir" (click)="subirImagen()">
+                            <i class="fa fa-save"></i> Cambiar imagen
+                        </button>
                     </div>
-
-                    <div class="form-group">
-                        <select name="proveedor" [ngModel]="producto.proveedor._id"class="form-control">
-                        <option class="form-control" *ngFor="let proveedor of proveedores" value={{proveedor._id}}>
-                            {{proveedor.nombre}}
-                        </option>
-                    </select>
-                    </div> 
-                    <button type="submit" class="btn btn-dark waves-effect waves-light m-r-10">Guardar</button>
-                    <button type="submit" routerLink="/productos" class="btn btn-dark waves-effect waves-light m-2">Cancelar</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- <div class="col-lg-5">
-      <div class="card">
-          <div class="card-body" align="center">
-              <h4 class="card-title">Subir / Actualizar Imagen</h4> -->
-    <!-- <h6 class="card-subtitle">made with bootstrap elements</h6> -->
-    <!-- <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="w150">
-              <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
-
-              <input (change)="seleccionImagen( $event.target.files[0] )" type="file">
-              <br>
-              <br>
-              <button (click)="cambiarImagen()" [disabled]="!imagenSubir" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10">Actualizar Imagen</button>
-
-
-
-          </div>
-      </div>
-  </div> -->
-
 </div>

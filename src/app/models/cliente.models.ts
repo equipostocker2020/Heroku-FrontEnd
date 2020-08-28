@@ -1,3 +1,6 @@
+import { URL_SERVICIOS } from '../config/config';
+
+const url = URL_SERVICIOS;
 export class Cliente {
 
     constructor(
@@ -10,6 +13,17 @@ export class Cliente {
         public dni?: string,
         public img?: string,
         public _id?: string,
-    ){}
+    ) { }
 
+    get imagenUrls() {
+        if (!this.img) {
+            return `${url}/upload/usuarios/no-image`;
+        } else if (this.img.includes('https')) {
+            return this.img;
+        } else if (this.img) {
+            return `${url}/upload/usuarios/${this.img}`;
+        } else {
+            return `${url}/upload/usuarios/no-image`;
+        }
+    }
 }

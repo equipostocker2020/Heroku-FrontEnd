@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-// import swal from 'sweetalert';
-
-import Swal from 'sweetalert2';
-
 import { UsuarioService } from '../../services/usuario.service';
-
 import { Router } from '@angular/router';
 import { ClienteService } from '../../services/cliente.service';
 import { Cliente } from '../../models/cliente.models';
@@ -26,16 +21,15 @@ export class CargarClienteComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.forma = new FormGroup({
       nombre: new FormControl(null, Validators.required),
-      apellido: new FormControl (null, Validators.required ),
+      apellido: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
-      direccion: new FormControl (null, Validators.required ),
-      cuit: new FormControl (null, Validators.required ),
-      telefono: new FormControl (null, Validators.required ),
-      dni : new FormControl (null, Validators.required ),
-    } );
+      direccion: new FormControl(null, Validators.required),
+      cuit: new FormControl(null, Validators.required),
+      telefono: new FormControl(null, Validators.required),
+      dni: new FormControl(null, Validators.required),
+    });
 
     this.forma.setValue({
       nombre: '',
@@ -48,13 +42,11 @@ export class CargarClienteComponent implements OnInit {
     });
 
   }
+  registrarCliente() {
 
-  registrarCliente(){
-    if (this.forma.invalid){
+    if (this.forma.invalid) {
       return;
     }
-    console.log(this.forma.value);
-
     // creando cliente a partir de modelo y forma del register html.
     const cliente = new Cliente(
       this.forma.value.nombre,
@@ -64,16 +56,17 @@ export class CargarClienteComponent implements OnInit {
       this.forma.value.cuit,
       this.forma.value.telefono,
       this.forma.value.dni
-
     );
-
-
     this._clienteService.crearCliente(cliente)
-          .subscribe( resp => {
-            console.log(resp);
-            this.router.navigate(['/clientes']);
-          });
-
+      .subscribe(resp => {
+        console.log(resp);
+        this.router.navigate(['/clientes']);
+      });
   }
 
+  eliminarStorage() {
+    localStorage.removeItem('id');
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+  }
 }

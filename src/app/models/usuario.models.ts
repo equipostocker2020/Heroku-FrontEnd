@@ -3,6 +3,8 @@
  * se mapean los campos para poder utilizarlos instanciandola las veces que la app lo requiera
  * @author: Stocker
 */
+import { URL_SERVICIOS } from '../config/config';
+const url = URL_SERVICIOS;
 
 export class Usuario {
 
@@ -19,6 +21,18 @@ export class Usuario {
         public img?: string,
         public role?: string,
         public _id?: string,
-    ){}
+    ) { }
+
+    get imagenUrls() {
+        if (!this.img) {
+            return `${url}/upload/usuarios/no-image`;
+        } else if (this.img.includes('https')) {
+            return this.img;
+        } else if (this.img) {
+            return `${url}/upload/usuarios/${this.img}`;
+        } else {
+            return `${url}/upload/usuarios/no-image`;
+        }
+    }
 
 }

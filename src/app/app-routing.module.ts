@@ -14,6 +14,7 @@ import { CargarProductosComponent } from './pages/cargar-productos/cargar-produc
 import { ActualizarProductoComponent } from './pages/actualizar-producto/actualizar-producto.component';
 import { ClientesComponent } from './pages/cliente/cliente.component';
 import { CargarClienteComponent } from './pages/cargar-cliente/cargar-cliente.component';
+import { ActualizarClienteComponent } from './pages/actualizar-cliente/actualizar-cliente.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent, data: {titulo: 'Registrarse en StockerApp'}},
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'producto/actualizarproducto', component: ActualizarProductoComponent, data: {titulo: 'Ver - Modificar Productos'}},
   { path: 'clientes', component: ClientesComponent , data: {titulo: 'Pagina de Clientes'}},
   { path: 'clientes/cargarcliente', component: CargarClienteComponent , data: {titulo: 'Cargar nuevos clientes'}},
+  { path: 'cliente/actualizarcliente', component: ActualizarClienteComponent , data: {titulo: 'Ver - Modificar Cliente'}},
   { path: '**', redirectTo: '/login' }
 ];
 

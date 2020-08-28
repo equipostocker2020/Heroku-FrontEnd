@@ -1,27 +1,85 @@
-# StockerFrontendAngular
+# Stocker Frontend con Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+Modelo de vistas que actua como Frontend para la aplicacion de Stocker. Construida con Angular que se comunica directamente con un API-REST montada en NodeJS.
 
-## Development server
+## Comezando 🚀
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
-## Code scaffolding
+Mira **Deployment** para conocer como desplegar el proyecto.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Pre-requisitos 📋
 
-## Build
+_Para levantar la aplicacion localmente es necesario contar con npm, nodejs y angular/cli , para  comprobar que lo tengas instalado_
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+npm -v
+nodejs -v
+ng --version
+```
+**En caso de no tener instalado alguno de los pre-requisitos, links a la documentacion oficial**
 
-## Running unit tests
+https://docs.npmjs.com/cli/install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+https://nodejs.org/es/download/
 
-## Running end-to-end tests
+https://cli.angular.io/
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+**En caso de no tener instalado alguno de los pre-requisitos, links a la documentacion oficial**
 
-## Further help
+_Una vez descargado el proyecto se procede a la instalacion de las librerias necesarias de la siguiente manera._
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+_En primer lugar la instalacion_
+
+```
+npm install
+```
+
+_luego levantar el proyecto_
+```
+ng serve -o
+```
+```
+Your global Angular CLI version (10.0.6) is greater than your local
+version (9.1.5). The local Angular CLI version is used.
+Date: 2020-08-20T18:32:50.800Z - Hash: b77e65a9904ec5b144b1 - Time: 10951ms
+* Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ *
+: Compiled successfully.
+```
+_Finalmente el servicio quedara levantado en el puerto 4200 y automaticamente se desplegara una pestaña con la aplicación de Stocker en su navegador predeterminado._
+
+_En caso de tener el puerto 4200 ocupado o simplemente querer cambiar el puerto donde se expone el servicio, simplemente modificar lo siguiente en server.js._
+
+```
+app.use(express.static(__dirname + '/dist/stocker-frontend-angular'));
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname +
+        '/dist/stocker-frontend-angular/index.html'));
+});
+app.listen(process.env.PORT || 4200);
+```
+
+## Despliegue 📦
+
+Todos los cambios locales son refrescados al guardar el proyecto Angular integrado con todas sus librerias.
+
+## Wiki 📖
+
+Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
+
+## Versionado 📌
+
+Usamos [Github](http://github.com) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/equipostocker2020/GR07-EquipoStocker-FrontEnd/tags).
+
+## Autores ✒️
+
+* **Gonzalo Figueras** - *Documentacion - Desarrollo* - [gonzaloFigueras](https://github.com/gonzaloFigueras)
+* **Marcelo Gutierrez** - *Documentacion - Desarrollo* - [marcelofabiangutierrez88](https://github.com/marcelofabiangutierrez88)
+* **Agustin Galarza** - *Documentacion - Desarrollo* - [AgustinArielGalarza](https://github.com/AgustinArielGalarza)
+
+
+
+## Expresiones de Gratitud 🎁
+
+* Este proyecto es la propuesta anual del taller de implementacion de la carrera Tecnico Superior en Analisis de Sistemas 📢
+* Agradecemos al docente Mariano Trigila por la exigencia, el compromiso y siempre exigirnos mas 🤓.
