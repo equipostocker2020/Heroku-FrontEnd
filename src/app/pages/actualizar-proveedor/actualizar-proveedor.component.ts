@@ -5,6 +5,8 @@ import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FileUploadService } from '../../services/file-upload.service';
+import { Usuario } from 'src/app/models/usuario.models';
+
 
 @Component({
   selector: 'app-actualizar-proveedor',
@@ -18,6 +20,7 @@ export class ActualizarProveedorComponent implements OnInit {
   id: string;
   imagenSubir: File;
   imagenTemp: string | ArrayBuffer;
+  usuario: Usuario;
 
   constructor(
     public _proveedorService: ProveedorService,
@@ -58,6 +61,7 @@ export class ActualizarProveedorComponent implements OnInit {
     this.proveedor.email = proveedor.email;
     this.proveedor.telefono = proveedor.telefono;
     this.proveedor.situacion_afip = proveedor.situacion_afip;
+    this.proveedor.usuario = this._usuarioService.usuario;
     this._usuarioService.token = this.token;
     this._proveedorService.actualizarProveedor(this.proveedor)
       .subscribe((resp: any) => {

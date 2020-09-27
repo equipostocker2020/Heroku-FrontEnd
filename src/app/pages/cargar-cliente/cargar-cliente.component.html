@@ -1,13 +1,16 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/dashboard">STOCKER</a>
+        <a class="navbar-brand" href="/home">STOCKER</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/home">Home </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/dashboard">Dashboard </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/usuarios">Usuarios</a>
@@ -21,6 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/clientes">Clientes</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pedidos">Pedidos</a>
+                </li>
             </ul>
             <div class="dropdown">
                 <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-label="Third group">
@@ -32,7 +38,6 @@
                     <a class="dropdown-item" href="/profile">Ver Perfil</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/login" (click)="eliminarStorage()">Salir</a>
-
                 </div>
             </div>
         </div>
@@ -84,6 +89,7 @@
                         <div class="form-group text-center m-t-20">
                             <div class="col-xs-12">
                                 <button class="btn btn-dark btn-lg btn-group text-uppercase waves-effect waves-light" type="submit">Registar Cliente </button>
+                                <button type="submit" routerLink="/clientes" class="btn btn-dark btn-lg btn-group text-uppercase waves-effect waves-light m-2">Cancelar</button>
                             </div>
                         </div>
                     </form>

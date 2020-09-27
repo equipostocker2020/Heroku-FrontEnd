@@ -49,6 +49,11 @@ export class UsuarioService {
           return err.throw(err);
         }));
   }
+
+  mandaEmail () {
+    const urlMail = URL_SERVICIOS + '/send-email' ;
+    return this.http.post(urlMail, "enviado");
+  }
   /**
    *
    * @param id

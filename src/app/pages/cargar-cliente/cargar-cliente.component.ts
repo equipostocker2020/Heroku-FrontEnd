@@ -4,7 +4,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
 import { ClienteService } from '../../services/cliente.service';
 import { Cliente } from '../../models/cliente.models';
-
+import { Usuario } from '../../models/usuario.models';
 @Component({
   selector: 'app-cargar-cliente',
   templateUrl: './cargar-cliente.component.html'
@@ -12,6 +12,7 @@ import { Cliente } from '../../models/cliente.models';
 export class CargarClienteComponent implements OnInit {
 
   forma: FormGroup;
+  usuario: Usuario;
 
   constructor(
     public _usuarioService: UsuarioService,
@@ -29,6 +30,7 @@ export class CargarClienteComponent implements OnInit {
       cuit: new FormControl(null, Validators.required),
       telefono: new FormControl(null, Validators.required),
       dni: new FormControl(null, Validators.required),
+      usuario: new FormControl(null, Validators.required)
     });
 
     this.forma.setValue({
@@ -39,6 +41,7 @@ export class CargarClienteComponent implements OnInit {
       cuit: '',
       telefono: '',
       dni: '',
+      usuario: this._usuarioService.usuario,
     });
 
   }
@@ -55,7 +58,8 @@ export class CargarClienteComponent implements OnInit {
       this.forma.value.direccion,
       this.forma.value.cuit,
       this.forma.value.telefono,
-      this.forma.value.dni
+      this.forma.value.dni,
+      this.forma.value.usuario,
     );
     this._clienteService.crearCliente(cliente)
       .subscribe(resp => {

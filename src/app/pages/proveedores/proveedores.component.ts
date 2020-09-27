@@ -102,6 +102,13 @@ export class ProveedoresComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
   }
+
+  cambiarEstado(proveedor: Proveedor){
+    this._proveedorService.actualizarProveedor(proveedor)
+    .subscribe ((resp: any) => {
+    });
+  }
+
 }
 
 

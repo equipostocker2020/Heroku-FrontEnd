@@ -65,7 +65,7 @@ Todos los cambios locales son refrescados al guardar el proyecto Angular integra
 
 ## Wiki 📖
 
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
+Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/equipostocker2020/GR07-EquipoStocker-FrontEnd/wiki)
 
 ## Versionado 📌
 

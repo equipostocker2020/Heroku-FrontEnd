@@ -15,8 +15,16 @@ import { ActualizarProductoComponent } from './pages/actualizar-producto/actuali
 import { ClientesComponent } from './pages/cliente/cliente.component';
 import { CargarClienteComponent } from './pages/cargar-cliente/cargar-cliente.component';
 import { ActualizarClienteComponent } from './pages/actualizar-cliente/actualizar-cliente.component';
+import { HomeComponent } from './components/home/home.component';
+import { CargarPedidosComponent } from './pages/cargar-pedidos/cargar-pedidos.component';
+import { PedidosComponent } from './pages/pedidos/pedidos.component';
+import { ActualizarPedidoComponent } from './pages/actualizar-pedido/actualizar-pedido.component';
+import { ClientePedidosComponent } from './pages/cliente-pedidos/cliente-pedidos.component';
+import { CargarUsuariosComponent } from './pages/cargar-usuarios/cargar-usuarios.component';
+
 
 const routes: Routes = [
+  { path: 'home', component: HomeComponent , data: {titulo: 'Home'}},
   { path: 'register', component: RegisterComponent, data: {titulo: 'Registrarse en StockerApp'}},
   { path: 'login', component: LoginComponent, data: {titulo: 'Login'},  },
   { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard'},  },
@@ -32,8 +40,15 @@ const routes: Routes = [
   { path: 'clientes', component: ClientesComponent , data: {titulo: 'Pagina de Clientes'}},
   { path: 'clientes/cargarcliente', component: CargarClienteComponent , data: {titulo: 'Cargar nuevos clientes'}},
   { path: 'cliente/actualizarcliente', component: ActualizarClienteComponent , data: {titulo: 'Ver - Modificar Cliente'}},
-  { path: '**', redirectTo: '/login' }
+  { path: 'pedidos', component: PedidosComponent, data: {titulo: 'Pagina de Pedido'}},
+  { path: 'pedidos/cargarpedido', component: CargarPedidosComponent , data: {titulo: 'Cargar nuevos pedidos'}},
+  { path: 'pedido/actualizarpedido', component: ActualizarPedidoComponent , data: {titulo: 'Ver - Modificar pedidos'}},
+  { path: 'cliente/clientepedido', component: ClientePedidosComponent, data: {titulo: 'Pedidos del clientes'}},
+  { path: 'usuario/cargarusuario', component: CargarUsuariosComponent, data: {titulo: 'Cargar un nuevo Usuario'}},
+  { path: '**', redirectTo: '/home' }
 ];
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

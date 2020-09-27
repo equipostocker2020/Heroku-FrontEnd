@@ -6,11 +6,12 @@ import { Usuario } from '../../models/usuario.models';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: []
+  selector: 'app-cargar-usuarios',
+  templateUrl: './cargar-usuarios.component.html',
+  styles: [
+  ]
 })
-export class RegisterComponent implements OnInit {
+export class CargarUsuariosComponent implements OnInit {
 
   forma: FormGroup;
 
@@ -88,9 +89,14 @@ export class RegisterComponent implements OnInit {
     // llamando al servicio y metodo para crear usuario
     this._usuarioService.crearUsuario(usuario)
       .subscribe(resp => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/usuarios']);
         this._usuarioService.mandaEmail();
       });
+  }
+  eliminarStorage() {
+    localStorage.removeItem('id');
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
   }
 
 }

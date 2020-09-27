@@ -5,7 +5,6 @@ import { ProductoService } from '../../services/producto.service';
 import { faEdit, faTrash, faPlus, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { UsuarioService } from '../../services/usuario.service';
 
-
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -40,6 +39,7 @@ export class ProductosComponent implements OnInit {
       .subscribe((resp: any) => {
         this.totalRegistros = resp.total;
         this.productos = resp.productos;
+        console.log(resp);
         this.cargando = false;
       });
   }
@@ -92,5 +92,9 @@ export class ProductosComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
   }
-
+  cambiarEstado(producto: Producto){
+    this._productoService.actualizarProducto(producto)
+    .subscribe ((resp: any) => {
+    });
+  }
 }

@@ -5,7 +5,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FileUploadService } from '../../services/file-upload.service';
-
+import { Usuario } from 'src/app/models/usuario.models';
 @Component({
   selector: 'app-actualizar-cliente',
   templateUrl: './actualizar-cliente.component.html',
@@ -19,6 +19,7 @@ export class ActualizarClienteComponent implements OnInit {
   id: string;
   imagenSubir: File;
   imagenTemp: string | ArrayBuffer;
+  usuario: Usuario;
 
   constructor(
     public _clienteService: ClienteService,
@@ -54,6 +55,8 @@ export class ActualizarClienteComponent implements OnInit {
     this.token = token;
   }
 
+
+
   guardar(cliente: Cliente) {
     this.cliente.nombre = cliente.nombre;
     this.cliente.apellido = cliente.apellido;
@@ -62,6 +65,7 @@ export class ActualizarClienteComponent implements OnInit {
     this.cliente.cuit = cliente.cuit;
     this.cliente.telefono = cliente.telefono;
     this.cliente.dni = cliente.dni;
+    this.cliente.usuario = this._usuarioService.usuario;
     this._usuarioService.token = this.token;
     console.log(cliente);
 

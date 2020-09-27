@@ -4,7 +4,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
 import { ProveedorService } from '../../services/proveedor.service';
 import { Proveedor } from '../../models/proveedor.models';
-
+import { Usuario } from '../../models/usuario.models';
 @Component({
   selector: 'app-cargar-proveedor',
   templateUrl: './cargar-proveedor.component.html',
@@ -14,6 +14,7 @@ import { Proveedor } from '../../models/proveedor.models';
 export class CargarProveedorComponent implements OnInit {
 
   forma: FormGroup;
+  usuario: Usuario;
 
   constructor(
     public _usuarioService: UsuarioService,
@@ -29,6 +30,7 @@ export class CargarProveedorComponent implements OnInit {
       cuit: new FormControl(null, Validators.required),
       telefono: new FormControl(null, Validators.required),
       situacion_afip: new FormControl(null, Validators.required),
+      usuario: new FormControl(null, Validators.required)
     });
 
     this.forma.setValue({
@@ -38,12 +40,14 @@ export class CargarProveedorComponent implements OnInit {
       cuit: '',
       telefono: '',
       situacion_afip: '',
+      usuario: this._usuarioService.usuario,
     });
   }
   registrarProveedor() {
     if (this.forma.invalid) {
       return;
     }
+    console.log(this.forma.value.usuario);
     // creando usuario a partir de modelo y forma del register html.
     const proveedor = new Proveedor(
       this.forma.value.nombre,
@@ -51,7 +55,8 @@ export class CargarProveedorComponent implements OnInit {
       this.forma.value.email,
       this.forma.value.cuit,
       this.forma.value.telefono,
-      this.forma.value.situacion_afip
+      this.forma.value.situacion_afip,
+      this.forma.value.usuario,
     );
     this._proveedorService.crearProveedor(proveedor)
       .subscribe(resp => {

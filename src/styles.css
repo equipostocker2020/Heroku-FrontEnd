@@ -11,6 +11,14 @@
     color: transparent;
 }
 
+.h3titulo-bis {
+    color: black !important;
+    font-family: monospace;
+    font-size: 12;
+    /* font-weight: 300px; */
+    -webkit-text-stroke: 0.1px black;
+}
+
 body {
     font-family: monospace;
     background: rgb(215, 214, 228);
@@ -75,6 +83,7 @@ hr {
 
 .table-avatar {
     width: 100px;
+    height: 80px;
     display: block;
     margin: auto;
     border: gray 3px solid;

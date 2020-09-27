@@ -24,6 +24,12 @@ import { CargarClienteComponent } from './pages/cargar-cliente/cargar-cliente.co
 import { ActualizarClienteComponent } from './pages/actualizar-cliente/actualizar-cliente.component';
 import { PipesModule } from './components/pipes/pipes.module';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { PedidosComponent } from './pages/pedidos/pedidos.component';
+import { CargarPedidosComponent } from './pages/cargar-pedidos/cargar-pedidos.component';
+import { ActualizarPedidoComponent } from './pages/actualizar-pedido/actualizar-pedido.component';
+import { ClientePedidosComponent } from './pages/cliente-pedidos/cliente-pedidos.component';
+import { CargarUsuariosComponent } from './pages/cargar-usuarios/cargar-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +49,13 @@ import { FooterComponent } from './components/footer/footer.component';
     ClientesComponent,
     CargarClienteComponent,
     ActualizarClienteComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    PedidosComponent,
+    CargarPedidosComponent,
+    ActualizarPedidoComponent,
+    ClientePedidosComponent,
+    CargarUsuariosComponent,
   ],
   imports: [
     BrowserModule,

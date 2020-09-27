@@ -1,0 +1,148 @@
+<section>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/home">STOCKER</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/home">Home </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/login">Login </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/register">Register </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</section>
+<section>
+    <div class="container">
+        <br>
+        <h3 class="text-white text-capitalize text-center">Bienvenidos a Stocker</h3>
+        <br>
+        <h4 class="text-white text-capitalize">Quienes somos ?</h4>
+        <p class="text-white text-capitalize h3titulo-bis">Somos un equipo del 3º año de la carrera Analista de sistemas del <b>IFTS Nº16</b>. Este proyecto es la consigna del <b>Taller de practica de desarrollos e implementacion. </b> <br>La consigna es armar un sistema web completo y sin restriccion
+            respecto a las herramientas a utilizar y demostrar los conocimientos adquiridos en diseño de sistemas, documentacion de un proyecto e implementacion en desarrollo de sofware.</p>
+        <h4 class="text-white text-capitalize">Herramientas elegidas</h4>
+        <p class="text-white text-capitalize h3titulo-bis">Desarrollamos una aplicacion bajo el patron de diseño <b>MVC</b> Para esto definimos construir una <b>API-REST</b> con NodeJS. Esta es la encargada de recibir todas las peticiones de la vista y controlar la logica de negocio necesaria antes de
+            persistir los datos. Como <b>vista</b> elegimos el Framework Angular y para la <b>persistencia de datos</b> elegimos una BD no relacional como MongoDB.
+            <br>Destacando que ninguno de los integrantes de este equipo tenia experiencia en el uso de estos lenguajes, la idea era tener un desafio y evolucionar en nuestro desempeño profesional</p>
+        <h4 class="text-white text-capitalize">Definicion del proyecto</h4>
+        <p class="text-white text-capitalize h3titulo-bis"><b>StockerApp</b> es una aplicación web que nace con la idea de gestionar inventarios de empresas pequeñas como PyMes.<br> La empresa u organización se registrará como <b>Usuario</b> y a partir de ahí podrá: Registrar nuevos <b>Proveedores</b>,
+            registrar nuevos <b>Productos</b> indicando el Proveedor que corresponda, registrar <b>Clientes</b> y registrar <b>Pedidos</b>.<br> La aplicación sera <b>multiusuario</b> por eso es necesario implementar roles o <b>permisos</b> a los usuarios.<br>En
+            este caso, existirán diferentes roles. El <b>administrador</b> que sera el que tiene acceso a todas las funcionalidades, el <b>usuario</b> que tendrá permisos de solo lectura, perfil de <b>ventas</b> que sera el encargado de gestionar clientes
+            y <b>Pedidos</b> y el perfil de <b>deposito</b> el cual tendrá la posibilidad de gestionar <b>Productos</b> y sus proveedores.<br> Los <b>Pedidos</b> los registra el <b>Usuario</b> indicando el <b>Clientes</b> que los solicita, los <b>Productos</b>            y la cantidad de los mismos. Dado que cada <b>Productos</b> cuenta con un stock, el <b>usuario</b> puede ver la cantidad de <b>Productos</b> disponibles, los <b>Productos</b> que tendrá disponible luego de un <b>Pedidos</b> y de esta manera
+            tener información constante sobre las necesidades que pueda tener en relación con sus <b>Productos</b>.
+        </p>
+        <h4 class="text-white text-capitalize">Problematica a resolver</h4>
+        <p class="text-white text-capitalize h3titulo-bis">Dado que muchas <b>Pymes o cuentapropistas</b> pequeños al ver crecer su negocio suelen llegar a tener poco control sobre la información general referida al control de stock , proveedores y clientes de su negocio y considerando que esto entendemos
+            es vital para el funcionamiento correcto de una organizacion pensamos en implementar un <b>sistema web</b> que gestione todo esto por la organizacion con la idea de dar una solucion practica, facil y amigable a quien desee utilizar <b>StockerApp</b>.
+            Diseñamos un sistema que puede ser utilizado tanto desde un ordenador, una tablet o un celular con la premisa de brindar soluciones practicas y sencillas. </p>
+        <h4 class="text-white text-capitalize">Documentacion relacionada</h4>
+        <p class="text-white text-capitalize h3titulo-bis">
+            Antes de generar el desarrollo propio generamos toda una documentacion previa al proyecto con la idea de realizar una implementacion mas simple.<br> Trabajamos bajo Scrum una metodologia Agil de desarrollo muy utilizada en el mercado profesional
+            utilizando <b>"sprints"</b> o iteracciones para ir generando todas las funcionalidades presentadas en este proyecto. Se realizaron documentaciones como:
+            <br><br>
+            <a class="text-white text-capitalize h3titulo-bis" href="https://docs.google.com/document/d/e/2PACX-1vSicqpb1Y6LS7TM-EMn2qwkYyqlN9i5R0uTT4ABrqZZ7IdxHfx8zWW2E62jFK95_rskVanF5h8h5EtF/pub">
+                <li>Presentacion y alcance del proyecto</li>
+            </a>
+
+            <a class="text-white text-capitalize h3titulo-bis" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSdlYmtPP4EtAqg0AfFSLeuoYyyICjRDE6SmXy9oyjCQXbOpbIGOUryUL3fK0OXze1NnsHAhxABzhvL/pubhtml">
+                <li>Documentacion Agile</li>
+            </a>
+            <a class="text-white text-capitalize h3titulo-bis" href="https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1#G10B_jQzSPpktv-n8wKUEamn1qEeyXZVl3">
+                <li>Diagrama UML</li>
+            </a>
+            <a class="text-white text-capitalize h3titulo-bis" href="https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1#G1VfXrhjGL_yfj3yCpodBdunX11PQ2iHg5">
+                <li>Diseño Arquitectura</li>
+            </a>
+            <a class="text-white text-capitalize h3titulo-bis" href="https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1&title=GR07%20-%20Flujo%20Tecnico#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1Qry4CXOA6lWBHJ6iFLwHSQGzw5Du0pz8%26export%3Ddownload">
+                <li>Flujo Tecnico</li>
+            </a>
+
+            <br> Ademas de generar una documentacion constante apoyado en nuestros repositorios de <b>Git</b> donde por cada entregable se ha registrado una version distinta para poder chequear los avances.<br> Generamos un usuario en <b>Github</b> perteneciente
+            al equipo para manejar toda la informacion centralizada. <br>
+            <br>
+            <a class="text-white text-capitalize h3titulo-bis" href="https://github.com/equipostocker2020">
+                <li>Repositorio Stocker</li>
+            </a>
+            <a class="text-white text-capitalize h3titulo-bis" href="https://github.com/equipostocker2020/GR07-EquipoStocker-BackEnd">
+                <li>Backend API REST</li>
+            </a>
+            <a class="text-white text-capitalize h3titulo-bis" href="https://github.com/equipostocker2020/GR07-EquipoStocker-BackEnd/wiki">
+                <li>Wiki API REST</li>
+            </a>
+            <a class="text-white text-capitalize h3titulo-bis" href="https://github.com/equipostocker2020/GR07-EquipoStocker-FrontEnd">
+                <li>Frontend Angular</li>
+            </a>
+            <a class="text-white text-capitalize h3titulo-bis" href="https://github.com/equipostocker2020/GR07-EquipoStocker-FrontEnd/wiki">
+                <li>Wiki FrontEnd</li>
+            </a>
+            <a class="text-white text-capitalize h3titulo-bis" href="https://docs.google.com/document/d/1_aFdpJIjgt0BpLyya_z9hIIsQCxn9XQaPbrtQzpy1ro/edit">
+                <li>Manual del Usuario</li>
+            </a>
+
+
+        </p>
+        <h4 class="text-white mt-3">Contacto</h4>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card text-white bg-dark mb-3">
+                    <img src="../../../assets/gonza.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Gonzalo Figueras</h5>
+                        <p class="card-text">Analista Desarrollador</p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <a href="https://github.com/gonzaloFigueras" class="btn btn-dark"><img src="../../../assets/733553.svg">Github</a>
+                                    <a href="https://www.linkedin.com/in/gonzalo-figueras-16ba1920/" class="btn btn-dark"><img src="../../../assets/174857.svg">linkedin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card text-white bg-dark mb-3">
+                    <img src="../../../assets/agus.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Agustin Galarza</h5>
+                        <p class="card-text">Full Stack DEV Java , Angular</p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <a href="https://github.com/AgustinArielGalarza" class="btn btn-dark"><img src="../../../assets/733553.svg">Github</a>
+                                    <a href="https://www.linkedin.com/in/agustin-galarza/" class="btn btn-dark"><img src="../../../assets/174857.svg">linkedin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card text-white bg-dark mb-3">
+                    <img src="../../../assets/marce.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Marcelo Gutierrez</h5>
+                        <p class="card-text">Desarrollador Backend Java</p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <a href="https://github.com/marcelofabiangutierrez88" class="btn btn-dark "><img src="../../../assets/733553.svg">Github</a>
+                                    <a href="https://www.linkedin.com/in/marcelo-fabian-gutierrez-409034169/" class="btn btn-dark"><img src="../../../assets/174857.svg">linkedin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br>
+    </div>
+</section>

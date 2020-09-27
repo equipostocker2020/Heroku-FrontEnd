@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
     this.usuario.direccion = usuario.direccion;
     this._usuarioService.actualizarUsuario(this.usuario)
       .subscribe((resp: any) => { });
-
+    this.router.navigate(['/dashboard']);
   }
 
   subirImagen() {

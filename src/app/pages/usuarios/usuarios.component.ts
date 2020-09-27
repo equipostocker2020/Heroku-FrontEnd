@@ -98,5 +98,11 @@ export class UsuariosComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
   }
+
+  cambiarRole(usuario: Usuario){
+    this._usuarioService.actualizarUsuario(usuario)
+    .subscribe ((resp: any) => {
+    });
+  }
 }
 

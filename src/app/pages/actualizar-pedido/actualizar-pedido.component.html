@@ -43,51 +43,66 @@
         </div>
     </nav>
 </section>
+
 <div class="container m-5">
-    <section>
-        <div class="container">
+    <div class="row">
+        <div class="col-lg-7">
             <div class="card">
                 <div class="card-body">
-                    <form ngNativeValidate ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarProducto()" id="loginform">
-                        <h3 class="box-title m-t-40 m-b-0 text-center subtitulo">Registrar un nuevo Producto</h3>
-                        <hr>
-                        <div class="form-group m-t-20">
-                            <div class="col-xs-12">
-                                <input formControlName="nombre" name="nombre" class="form-control" type="text" required placeholder="Ingrese Nombre ">
-                            </div>
-                        </div>
+                    <h4 class="card-title subtitulo text-center">Actualizar Pedido</h4>
+                    <hr>
+                    <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20 mt-2s">
+                        
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input formControlName="descripcion" name="descripcion" class="form-control" type="text" required placeholder="Descripcion">
+                                <label name="numero_pedido" class="form-control" type="number"  placeholder="Numero de pedido">{{pedido.numero_pedido}}</label>
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <select name="cliente" [ngModel]="pedido.cliente._id" class="form-control">
+                                <option class="form-control" *ngFor="let cliente of clientes"
+                                    value={{cliente._id}}>
+                                    {{cliente.nombre}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select name="producto" [ngModel]="pedido.producto._id" class="form-control" (change)="muestraPrecio($event.target.value)">
+                                <option class="form-control" *ngFor="let producto of productos"
+                                    value={{producto._id}}>
+                                    {{producto.nombre}}
+                                </option>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input formControlName="precio" name="precio" class="form-control" type="number" required placeholder="$ Precio">
+                                <label [ngModel]="pedido.producto.precio" name="precio" class="form-control" type="text">
+                                    {{precio}} $</label>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input formControlName="stock" name="stock" class="form-control" type="number" required placeholder="Ingrese Cantidad">
+                                <input  [ngModel]="pedido.cantidad" name="cantidad" class="form-control" type="number"  (change)="muestraTotal($event.target.value)" required placeholder="Cantidad">
                             </div>
                         </div>
-                        <select formControlName="proveedor" class="form-control" required>
-                                             <option value="">Seleccione proveedor</option>
-                        <option class="form-control"  *ngFor="let proveedor of proveedores"  [value]="proveedor._id">
-                            <ng-template [ngIf]="proveedor.estado == 'ACTIVO'">
-                            {{proveedor.nombre}}
-                        </ng-template>
-                        </option>
-                    </select>
-                        <div class="form-group text-center m-t-20 mt-5">
+                       
+                        <div class="form-group">
+                            <h6>Total</h6>
                             <div class="col-xs-12">
-                                <button class="btn btn-dark btn-lg btn-group text-uppercase waves-effect waves-light" type="submit">Registar Producto </button>
-                                <button type="submit" routerLink="/productos" class="btn btn-dark btn-lg btn-group text-uppercase waves-effect waves-light m-2">Cancelar</button>
+                                <label [ngModel]="pedido.total" name="total" class="form-control" type="text"  > 
+                                    {{total}} $</label>
                             </div>
-                        </div>
+                        </div>    
+                        
+                        <button type="submit" class="btn btn-dark waves-effect waves-light m-r-10">Guardar</button>
+                        <button type="submit" routerLink="/pedidos" class="btn btn-dark waves-effect waves-light m-2">Cancelar</button>
                     </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </div>

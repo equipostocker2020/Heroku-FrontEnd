@@ -1,4 +1,5 @@
 import { URL_SERVICIOS } from '../config/config';
+import { Usuario } from './usuario.models';
 
 const url = URL_SERVICIOS;
 
@@ -11,9 +12,11 @@ export class Proveedor {
         public cuit?: string,
         public telefono?: string,
         public situacion_afip?: string,
+        public usuario?: Usuario,
         public img?: string,
         // tslint:disable-next-line: variable-name
         public _id?: string,
+        public estado?: string,
     ) { }
 
     get imagenUrls() {

@@ -62,7 +62,7 @@ export class ProveedorService {
           console.log(err);
           console.log(err.error.errors.message);
           const errores = err.error.errors.message;
-          Swal.fire('Error al registrar proveedor', errores.substring(29), 'error');
+          Swal.fire('Error al registrar proveedor', errores, 'error');
           return err.throw(err);
         }));
   }

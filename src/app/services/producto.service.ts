@@ -53,6 +53,11 @@ export class ProductoService {
       });
   }
 
+  cargarProductosPorID(id: string) {
+    const url = URL_SERVICIOS + '/producto/'+ id;
+    return this.http.get(url);
+  }
+
   cargarProductos() {
     const url = URL_SERVICIOS + '/producto';
     return this.http.get(url);
@@ -83,6 +88,6 @@ export class ProductoService {
   buscarProductos(termino: string) {
     const url = URL_SERVICIOS + '/busqueda/coleccion/productos/' + termino;
     return this.http.get(url)
-      .map((resp: any) => resp.productos);
+        .map((resp: any) => resp.productos);
   }
 }

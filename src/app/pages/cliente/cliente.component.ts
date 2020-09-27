@@ -4,6 +4,9 @@ import { ClienteService } from '../../services/cliente.service';
 import Swal from 'sweetalert2';
 import { faEdit, faTrash, faPlus, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { UsuarioService } from '../../services/usuario.service';
+import { PedidoService } from 'src/app/services/pedido.service';
+import { Pedido } from 'src/app/models/pedido.models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clientes',
@@ -17,14 +20,18 @@ export class ClientesComponent implements OnInit {
   faTrash = faTrash;
   faPencilAlt = faPencilAlt;
   clientes: Cliente[] = [];
+  pedidos: Pedido[] = [];
+  pedidosCliente: Pedido[] = [];
   desde = 0;
   totalRegistros = 0;
   cargando = true;
   id: string;
 
   constructor(
+    public router: Router,
     public _clienteService: ClienteService,
-    public _usuarioService: UsuarioService
+    public _usuarioService: UsuarioService,
+    public _pedidoService: PedidoService
   ) { }
 
   ngOnInit() {
@@ -105,4 +112,32 @@ export class ClientesComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
   }
+
+  cambiarEstado(cliente: Cliente){
+    this._clienteService.actualizarCliente(cliente)
+    .subscribe ((resp: any) => {
+    });
+  }
+
+  compruebaPedido(token: string, cliente: Cliente){
+
+    this._pedidoService.cargarPedidoCienteID(cliente)
+    .subscribe ((resp: any) => {
+      this.pedidos =  resp.pedidos;
+      if(this.pedidos.length == 0){
+        Swal.fire({title: 'El cliente no tiene Pedidos',
+        icon: 'warning',
+        confirmButtonColor: '#3085d6'
+      });
+      }else{
+        this.router.navigate(['/cliente/clientepedido']);
+        localStorage.setItem('token', token);
+        localStorage.setItem('cliente', JSON.stringify(cliente));
+        this.cliente = cliente;
+        this.token = token;
+      }
+    });
+
+
+}
 }
