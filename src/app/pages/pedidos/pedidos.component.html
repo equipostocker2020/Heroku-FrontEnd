@@ -111,15 +111,20 @@
                             </td>
 
                             <td *ngIf="this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'SALES_ROLE' || this._usuarioService.usuario.role == 'DEPOSIT_ROLE' ">
-                                <select *ngIf="pedido.estado == 'enviado' || pedido.estado == 'preparación'" [(ngModel)]="pedido.estado" name="role" class="form-control" (change)="cambiarEstado(pedido, $event.target.value)">
+                                <select *ngIf="pedido.estado == 'preparación'" [(ngModel)]="pedido.estado" name="role" class="form-control" (change)="cambiarEstado(pedido, $event.target.value)">
                                             <option value="preparación">PREPARACION</option>
                                             <option value="enviado">ENVIADO</option>
                                             <option value="cancelado">CANCELADO</option>
 
                                         </select>
 
+                                <select *ngIf="pedido.estado == 'enviado'" [(ngModel)]="pedido.estado" name="role" class="form-control" (change)="cambiarEstado(pedido, $event.target.value)">
+                                                <option disabled value="enviado">ENVIADO</option>
+                                </select>
+                           
+
                                 <select *ngIf="pedido.estado == 'cancelado'" [(ngModel)]="pedido.estado" name="role" class="form-control">
-                                            <option disabled value="cancelado">Cancelado</option>
+                                            <option disabled value="cancelado">CANCELADO</option>
                                         </select>
                             </td>
 
@@ -127,15 +132,11 @@
                                 {{pedido.usuario.email}}
                             </td>
 
-                            <td *ngIf="(this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'SALES_ROLE') && (pedido.estado == 'enviado' || pedido.estado == 'preparación')">
+                            <td *ngIf="(this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'SALES_ROLE') && (pedido.estado == 'preparación')">
                                 <button (click)="guardarStorage(token,pedido)" routerLink="/pedido/actualizarpedido" class="btn btn-success">
                                             <fa-icon [icon]="faEdit"></fa-icon>
 
                                         </button>
-                                <!-- <button (click)="borrarPedido(pedido)" class="btn btn-danger">
-                                            <fa-icon [icon]="faTrash"></fa-icon>
-
-                                        </button> -->
                             </td>
                         </tr>
                     </tbody>
@@ -143,7 +144,5 @@
             </div>
         </div>
     </div>
-    <!-- </div> -->
 </section>
 
-<!-- </div> -->

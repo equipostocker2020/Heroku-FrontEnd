@@ -43,9 +43,7 @@
         </div>
     </nav>
 </section>
-<!-- <div class="container m-5"> -->
 <section>
-    <!-- <div class="container py-4"> -->
     <div class="row m-2">
         <div class="col-md-12 py-4">
             <div class="row animated fadeIn">
@@ -79,8 +77,6 @@
                             <th>Email</th>
                             <th>Dirección</th>
                             <th>Cuit</th>
-                            <!-- <th>Telefono</th> -->
-                            <!-- <th>DNI</th> -->
                             <th class="text">Modificado por</th>
                             <th *ngIf="this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'SALES_ROLE' ">Estado</th>
                             <th *ngIf="this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'SALES_ROLE' ">Ver Pedidos</th>
@@ -107,12 +103,6 @@
                             <td class="text">
                                 {{cliente.cuit}}
                             </td>
-                            <!-- <td class="text">
-                                {{cliente.telefono}}
-                            </td> -->
-                            <!-- <td class="text">
-                                {{cliente.dni}}
-                            </td> -->
                             <td class="text text-center">
                                 {{cliente.usuario.email}}
                             </td>
@@ -131,12 +121,9 @@
 
                             <td class="text" *ngIf="this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'SALES_ROLE' ">
                                 <div class="col text-center">
-                                    <button *ngIf="this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'SALES_ROLE' " (click)="guardarStorage(token,cliente)" routerLink="/cliente/actualizarcliente" class="btn btn-success">
+                                    <button *ngIf="(this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'SALES_ROLE') && (cliente.estado == 'ACTIVO')" (click)="guardarStorage(token,cliente)" routerLink="/cliente/actualizarcliente" class="btn btn-success">
                                                 <fa-icon [icon]="faPencilAlt"></fa-icon>
                                             </button>
-                                    <!-- <button *ngIf="this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'SALES_ROLE' " (click)="borrarCliente(cliente)" class="btn btn-danger">
-                                                <fa-icon [icon]="faTrash"></fa-icon>
-                                            </button> -->
                                 </div>
                             </td>
                         </tr>
@@ -145,6 +132,4 @@
             </div>
         </div>
     </div>
-    <!-- </div> -->
 </section>
-<!-- </div> -->

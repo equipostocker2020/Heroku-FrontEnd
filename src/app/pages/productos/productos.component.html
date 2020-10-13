@@ -43,9 +43,7 @@
         </div>
     </nav>
 </section>
-<!-- <div class="container m-5"> -->
 <section>
-    <!-- <div class="container py-4"> -->
     <div class="row m-2">
         <div class="col">
             <div class="row animated fadeIn">
@@ -71,7 +69,7 @@
                 </div>
             </div>
             <div class="table-responsive table-bordered">
-                <table class="table table-dark table-hover">
+                <table class="table table-dark table-hover text-center">
                     <thead class="thead-dark">
                         <tr>
                             <th>Imagen</th>
@@ -126,12 +124,9 @@
                             </td>
                             <td>
                                 <div class="col text-center">
-                                    <button *ngIf="this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'DEPOSIT_ROLE' " (click)="guardarStorage(token,producto)" routerLink="/producto/actualizarproducto" class="btn btn-success">
+                                    <button *ngIf="(this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'DEPOSIT_ROLE') && (producto.estado == 'ACTIVO') " (click)="guardarStorage(token,producto)" routerLink="/producto/actualizarproducto" class="btn btn-success">
                                                 <fa-icon [icon]="faPencilAlt"></fa-icon>
                                             </button>
-                                    <!-- <button *ngIf="this._usuarioService.usuario.role == 'ADMIN_ROLE' || this._usuarioService.usuario.role == 'DEPOSIT_ROLE' " (click)="borrarProducto(producto)" class="btn btn-danger">
-                                                <fa-icon [icon]="faTrash"></fa-icon>
-                                            </button> -->
                                 </div>
                             </td>
                         </tr>
@@ -140,6 +135,4 @@
             </div>
         </div>
     </div>
-    <!-- </div> -->
 </section>
-<!-- </div> -->
